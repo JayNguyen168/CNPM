@@ -16,7 +16,9 @@ namespace MyCompanyName.AbpZeroTemplate.MyDocument.DTO
 
     public class DocumentListDto : FullAuditedEntityDto
     {
-        public string Title { get; set; }
+        public string title { get; set; }
+
+        public string code { get; set; }
 
         public string description { get; set; }
 

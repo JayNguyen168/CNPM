@@ -114,11 +114,11 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
                 catch (FormatException ex)
                 {
                     // Handle the exception caused by an incorrect format in str_dateValid
-                    dateValid = DateTime.MinValue;
+                    dateValid = new DateTime(4444, 2, 29);
                 }
             }
 
-            if(!str_dateExpire.IsNullOrEmpty())
+            if (!str_dateExpire.IsNullOrEmpty())
             {
                 try
                 {
@@ -128,7 +128,7 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
                 catch (FormatException ex)
                 {
                     // Handle the exception caused by an incorrect format in str_dateExpire
-                    dateExpire = DateTime.MinValue;
+                    dateExpire = new DateTime(4444, 2, 29);
                 }
             }
 
@@ -172,8 +172,8 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
 
             return new ListResultDto<DocumentListDto>(ObjectMapper.Map<List<DocumentListDto>>(document));
         }
-        [AbpAuthorize(AppPermissions.Pages_Tenant_Document_DeleteRestore)]
 
+        [AbpAuthorize(AppPermissions.Pages_Tenant_Document_DeleteRestore)]
         public async Task DeleteDocument(EntityDto input)
         {
             await _documentRepository.DeleteAsync(input.Id);
