@@ -40,5 +40,6 @@ namespace MyCompanyName.AbpZeroTemplate.MyDocument
         [ForeignKey("DVKCBId")]
         //public virtual User User { get; set; }
         public virtual long DVKCBId { get; set; }
+        public virtual string docType { get; set; }
     }
 }
