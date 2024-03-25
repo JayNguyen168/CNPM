@@ -69,10 +69,10 @@
         <div class="advanced-search mt-3" *ngIf="showAdvancedSearch">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <input class="form-control" type="text" name="validDate" [(ngModel)]="validDate" autocomplete="off" placeholder="Validate Date">
+                    <input class="form-control" type="type=datetime-local" name="validDate" [(ngModel)]="validDate" bsDatepicker placeholder="Validate Date">
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <input class="form-control" type="text" name="expireDate" [(ngModel)]="expireDate" autocomplete="off" bsDatepicker placeholder="Expire Date">
+                    <input class="form-control" type="type=datetime-local" name="expireDate" [(ngModel)]="expireDate" bsDatepicker placeholder="Expire Date">
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <!-- <button class="btn btn-primary" (click)="searchExtra()"><i class="fas fa-search"></i> Search by Date Range </button> -->
@@ -109,8 +109,8 @@
                         <ng-template pTemplate="header">
                             <tr>
                                 <th pSortableColumn="title">Title<p-sortIcon></p-sortIcon></th>
-                                <th pSortableColumn="code">Code<p-sortIcon></p-sortIcon></th>
-                                <th pSortableColumn="description">Description<p-sortIcon></p-sortIcon></th>
+                                <th pSortableColumn="docID">Code<p-sortIcon></p-sortIcon></th>
+                                <th pSortableColumn="type">Description<p-sortIcon></p-sortIcon></th>
                                 <th pSortableColumn="validated">Validated<p-sortIcon></p-sortIcon></th>
                                 <th pSortableColumn="expired">Expired<p-sortIcon></p-sortIcon></th>
                             </tr>
