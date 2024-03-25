@@ -16739,6 +16739,7 @@ export class DocumentListDto implements IDocumentListDto {
     province!: string | undefined;
     showed!: boolean;
     dvkcbId!: number;
+    docType!: string | undefined;
     isDeleted!: boolean;
     deleterUserId!: number | undefined;
     deletionTime!: DateTime | undefined;
@@ -16771,6 +16772,7 @@ export class DocumentListDto implements IDocumentListDto {
             this.province = _data["province"];
             this.showed = _data["showed"];
             this.dvkcbId = _data["dvkcbId"];
+            this.docType = _data["docType"];
             this.isDeleted = _data["isDeleted"];
             this.deleterUserId = _data["deleterUserId"];
             this.deletionTime = _data["deletionTime"] ? DateTime.fromISO(_data["deletionTime"].toString()) : <any>undefined;
@@ -16803,6 +16805,7 @@ export class DocumentListDto implements IDocumentListDto {
         data["province"] = this.province;
         data["showed"] = this.showed;
         data["dvkcbId"] = this.dvkcbId;
+        data["docType"] = this.docType;
         data["isDeleted"] = this.isDeleted;
         data["deleterUserId"] = this.deleterUserId;
         data["deletionTime"] = this.deletionTime ? this.deletionTime.toString() : <any>undefined;
@@ -16828,6 +16831,7 @@ export interface IDocumentListDto {
     province: string | undefined;
     showed: boolean;
     dvkcbId: number;
+    docType: string | undefined;
     isDeleted: boolean;
     deleterUserId: number | undefined;
     deletionTime: DateTime | undefined;

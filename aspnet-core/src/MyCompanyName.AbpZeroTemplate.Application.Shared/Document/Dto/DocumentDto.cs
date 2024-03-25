@@ -39,5 +39,7 @@ namespace MyCompanyName.AbpZeroTemplate.MyDocument.DTO
         public bool showed { get; set; }
         //public User User { get; set; }
         public long DVKCBId { get; set; }
+
+        public string docType { get; set; }
     }
 }
