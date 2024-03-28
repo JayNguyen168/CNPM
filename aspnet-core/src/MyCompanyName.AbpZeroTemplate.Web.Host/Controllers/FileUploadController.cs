@@ -1,6 +1,7 @@
 using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using MyCompanyName.AbpZeroTemplate.Authorization;
 using MyCompanyName.AbpZeroTemplate.Web.Controllers;
@@ -46,7 +47,13 @@ public class FileUploadController : AbpZeroTemplateControllerBase
     [HttpGet]
     public async Task<IActionResult> DownloadFile(String fileName)
     {
-        var filePath = Path.Combine(_env.ContentRootPath, "Books", fileName);
+        //var filePath = Path.Combine(_env.ContentRootPath, "Books", fileName);
+        var builder = new ConfigurationBuilder()
+                              .SetBasePath(Directory.GetCurrentDirectory())
+                              .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+        string directory = builder.Build().GetSection("Path").GetSection("Upload").Value;
+        var filePath = Path.Combine(_env.ContentRootPath, directory, fileName);
         var contentType = GetContentType(fileName);
         var bytes = await System.IO.File.ReadAllBytesAsync(filePath);
         return File(bytes, contentType, Path.GetFileName(filePath));
