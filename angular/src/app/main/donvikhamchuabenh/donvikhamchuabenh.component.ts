@@ -13,11 +13,11 @@ import { TableModule } from 'primeng/table';
 
 @Component({
     selector: 'createDocumentModal',
-    templateUrl: './quanlyvanban.component.html',
+    templateUrl: './donvikhamchuabenh.component.html',
     animations: [appModuleAnimation()]
 })
 
-export class QuanlyvanbanComponent extends AppComponentBase implements OnInit {
+export class DonvikhamchuabenhComponent extends AppComponentBase implements OnInit {
 
   data: DocumentListDto[] = [];
   filter: string = '';
@@ -43,35 +43,6 @@ export class QuanlyvanbanComponent extends AppComponentBase implements OnInit {
       { label: 'BaRia', value: 'BaRia' },
       { label: 'DongNai', value: 'DongNai' },
       { label: 'ThuDuc', value: 'ThuDuc' },
-      { label: 'Báo cáo', value: 'Báo cáo' },
-      { label: 'Bản ghi nhớ', value: 'Bản ghi nhớ' },
-      { label: 'Bản thỏa thuận', value: 'Bản thỏa thuận' },
-      { label: 'Biên bản', value: 'Biên bản' },
-      { label: 'Chỉ thị', value: 'Chỉ thị' },
-      { label: 'Chương trình', value: 'Chương trình' },
-      { label: 'Công điện', value: 'Công điện' },
-      { label: 'Công văn', value: 'Công văn' },
-      { label: 'Dự án', value: 'Dự án' },
-      { label: 'Đề án', value: 'Đề án' },
-      { label: 'Giấy giới thiệu', value: 'Giấy giới thiệu' },
-      { label: 'Giấy mời', value: 'Giấy mời' },
-      { label: 'Giấy nghỉ phép', value: 'Giấy nghỉ phép' },
-      { label: 'Giấy ủy quyền', value: 'Giấy ủy quyền' },
-      { label: 'Hợp đồng', value: 'Hợp đồng' },
-      { label: 'Hướng dẫn', value: 'Hướng dẫn' },
-      { label: 'Kế hoạch', value: 'Kế hoạch' },
-      { label: 'Nghị quyết', value: 'Nghị quyết' },
-      { label: 'Phương án', value: 'Phương án' },
-      { label: 'Quy chế', value: 'Quy chế' },
-      { label: 'Quy định', value: 'Quy định' },
-      { label: 'Quyết định', value: 'Quyết định' },
-      { label: 'Thông báo', value: 'Thông báo' },
-      { label: 'Thông cáo', value: 'Thông cáo' },
-      { label: 'Thư công', value: 'Thư công' },
-      { label: 'Tờ trình', value: 'Tờ trình' },
-      { label: 'Tài liệu', value: 'Tài liệu' },
-      { label: 'Thông tin', value: 'Thông tin' },
-      { label: 'Thủ tục', value: 'Thủ tục' },
     ];
   }
 
@@ -111,12 +82,12 @@ export class QuanlyvanbanComponent extends AppComponentBase implements OnInit {
 
   // Function to perform basic search
   getSearch(): void{
-    if((this.validDate != '') && (this.expireDate == '')){
+    if((this.validDate != '') && (this.expireDate == '' || this.expireDate == null)){
       this._documentService.search(this.filter, 1, this.validDate, this.expireDate).subscribe((result) => {
           this.data = result.items;
       })
     }
-    else if(this.validDate == '' && this.expireDate != ''){
+    else if((this.validDate == '' || this.validDate == null) && this.expireDate != ''){
       this._documentService.search(this.filter, 2, this.validDate, this.expireDate).subscribe((result) => {
           this.data = result.items;
       })
