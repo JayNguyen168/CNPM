@@ -111,12 +111,12 @@ export class QuanlyvanbanComponent extends AppComponentBase implements OnInit {
 
   // Function to perform basic search
   getSearch(): void{
-    if((this.validDate != '') && (this.expireDate == '' || this.expireDate == null)){
+    if((this.validDate != '') && (this.expireDate == '')){
       this._documentService.search(this.filter, 1, this.validDate, this.expireDate).subscribe((result) => {
           this.data = result.items;
       })
     }
-    else if((this.validDate == '' || this.validDate == null) && this.expireDate != ''){
+    else if(this.validDate == '' && this.expireDate != ''){
       this._documentService.search(this.filter, 2, this.validDate, this.expireDate).subscribe((result) => {
           this.data = result.items;
       })
