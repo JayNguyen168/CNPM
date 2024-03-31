@@ -1,6 +1,6 @@
 <div [@routerTransition]>
 <div class="container">
-<h3>{{"Quản lý văn bản pháp lý" | localize}} ({{getDocumentCount()}})</h3>
+<h3>{{"Quản lý văn bản" | localize}} ({{getDocumentCount()}})</h3>
             <!-- Bảng dữ liệu -->
             <div class="row mt-3">
                 <div class="col">
@@ -27,7 +27,7 @@
                                             <button class="btn btn-light" (click)="getSearch()">
                                                 <i class="fas fa-file-import"></i> Nhập file </button>
 
-                                            <button class="btn btn-primary mr-2" disabled="true"  (click)="getSearch()">
+                                            <button class="btn btn-primary mr-2" (click)="getSearch()">
                                                 <i class="fas fa-plus"></i> Tạo mới </button>
 
                                         </div>
@@ -77,15 +77,15 @@
                                     <ng-template pTemplate="header">
                                         <tr>
                                             <!-- <th class="text-primary text-opacity-50"></th> -->
-                                            <th pSortableColumn="title" class="text-primary text-opacity-50">Title
+                                            <th pSortableColumn="title" class="text-primary text-opacity-50">Tiêu đề
                                                 <p-sortIcon></p-sortIcon></th>
-                                            <th pSortableColumn="docID" class="text-primary text-opacity-50">Code
+                                            <th pSortableColumn="code" class="text-primary text-opacity-50">Số hiệu
                                                 <p-sortIcon></p-sortIcon></th>
-                                            <th pSortableColumn="type" class="text-primary text-opacity-50">Description
+                                            <th pSortableColumn="docType" class="text-primary text-opacity-50">Loại văn bản
                                                 <p-sortIcon></p-sortIcon></th>
-                                            <th pSortableColumn="validated" class="text-primary text-opacity-50">Validated
+                                            <th pSortableColumn="validated" class="text-primary text-opacity-50">Hiệu lực
                                                 <p-sortIcon></p-sortIcon></th>
-                                            <th pSortableColumn="expired" class="text-primary text-opacity-50">Expired
+                                            <th pSortableColumn="expired" class="text-primary text-opacity-50">Hết hiệu lực
                                                 <p-sortIcon></p-sortIcon></th>
                                         </tr>
                                     </ng-template>
@@ -111,7 +111,7 @@
 
                                             <td>{{ document.title }}</td>
                                             <td>{{ document.code }}</td>
-                                            <td>{{ document.description }}</td>
+                                            <td>{{ document.docType }}</td>
                                             <td>{{ document.validation }}</td>
                                             <td>{{ document.expiration }}</td>
 
