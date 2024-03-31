@@ -13,8 +13,8 @@ import { RouterModule } from '@angular/router';
                         data: { permission: 'Pages.Tenant.Dashboard' },
                     },
                     {
-                        path: 'quan-ly-van-ban',
-                        loadChildren: () => import('./quanlyvanban/quanlyvanban.module').then(m => m.QuanlyvanbanModule)
+                        path: 'chuyen-vien-so',
+                        loadChildren: () => import('./chuyenvienso/quanlyvanban.module').then(m => m.QuanlyvanbanModule)
                     },
                     {
                         path: 'don-vi-kham-chua-benh',

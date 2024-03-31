@@ -91,7 +91,7 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
             {
                 query = query.Where(p =>
                     p.title.Contains(input.Filter) ||
-                    p.code.Contains(input.Filter) ||
+                    p.code.Contains(input.Filter) ||    
                     p.docType.Contains(input.Filter) ||
                     p.fullText.Contains(input.Filter));
             }
