@@ -16728,6 +16728,7 @@ export interface IDelegatedImpersonateInput {
 
 export class DocumentListDto implements IDocumentListDto {
     title!: string | undefined;
+    code!: string | undefined;
     description!: string | undefined;
     validation!: DateTime;
     expiration!: DateTime;
@@ -16738,6 +16739,7 @@ export class DocumentListDto implements IDocumentListDto {
     province!: string | undefined;
     showed!: boolean;
     dvkcbId!: number;
+    docType!: string | undefined;
     isDeleted!: boolean;
     deleterUserId!: number | undefined;
     deletionTime!: DateTime | undefined;
@@ -16759,6 +16761,7 @@ export class DocumentListDto implements IDocumentListDto {
     init(_data?: any) {
         if (_data) {
             this.title = _data["title"];
+            this.code = _data["code"];
             this.description = _data["description"];
             this.validation = _data["validation"] ? DateTime.fromISO(_data["validation"].toString()) : <any>undefined;
             this.expiration = _data["expiration"] ? DateTime.fromISO(_data["expiration"].toString()) : <any>undefined;
@@ -16769,6 +16772,7 @@ export class DocumentListDto implements IDocumentListDto {
             this.province = _data["province"];
             this.showed = _data["showed"];
             this.dvkcbId = _data["dvkcbId"];
+            this.docType = _data["docType"];
             this.isDeleted = _data["isDeleted"];
             this.deleterUserId = _data["deleterUserId"];
             this.deletionTime = _data["deletionTime"] ? DateTime.fromISO(_data["deletionTime"].toString()) : <any>undefined;
@@ -16790,6 +16794,7 @@ export class DocumentListDto implements IDocumentListDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["title"] = this.title;
+        data["code"] = this.code;
         data["description"] = this.description;
         data["validation"] = this.validation ? this.validation.toString() : <any>undefined;
         data["expiration"] = this.expiration ? this.expiration.toString() : <any>undefined;
@@ -16800,6 +16805,7 @@ export class DocumentListDto implements IDocumentListDto {
         data["province"] = this.province;
         data["showed"] = this.showed;
         data["dvkcbId"] = this.dvkcbId;
+        data["docType"] = this.docType;
         data["isDeleted"] = this.isDeleted;
         data["deleterUserId"] = this.deleterUserId;
         data["deletionTime"] = this.deletionTime ? this.deletionTime.toString() : <any>undefined;
@@ -16814,6 +16820,7 @@ export class DocumentListDto implements IDocumentListDto {
 
 export interface IDocumentListDto {
     title: string | undefined;
+    code: string | undefined;
     description: string | undefined;
     validation: DateTime;
     expiration: DateTime;
@@ -16824,6 +16831,7 @@ export interface IDocumentListDto {
     province: string | undefined;
     showed: boolean;
     dvkcbId: number;
+    docType: string | undefined;
     isDeleted: boolean;
     deleterUserId: number | undefined;
     deletionTime: DateTime | undefined;

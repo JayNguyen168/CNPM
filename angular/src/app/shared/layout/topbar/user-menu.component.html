@@ -47,7 +47,7 @@
     >
         <i *ngIf="isImpersonatedLogin" class="fa fa-reply text-danger pe-2"></i>
         <span [class]="textCssClass">
-            <span *ngIf="isMultiTenancyEnabled" class="tenancy-name d-inline-block fs-6">{{ tenancyName }}\</span>
+            <span *ngIf="isMultiTenancyEnabled" class="tenancy-name d-inline-block fs-6">{{ tenancyName }}</span>
             <span class="d-inline-block fs-6">{{ userName }}</span>
         </span>
         <span [class]="symbolCssClass">

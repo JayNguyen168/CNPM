@@ -13,13 +13,16 @@ import { RouterModule } from '@angular/router';
                         data: { permission: 'Pages.Tenant.Dashboard' },
                     },
                     {
-                        path: 'quan-ly-van-ban',
-                        loadChildren: () => import('./quanlyvanban/quanlyvanban.module').then(m => m.QuanlyvanbanModule)
-                        
-                    },
-                    {
                         path: 'document',
                         loadChildren: () => import('./document/document.module').then(m => m.DocumentModule)
+                    },
+                    {
+                        path: 'chuyen-vien-so',
+                        loadChildren: () => import('./chuyenvienso/quanlyvanban.module').then(m => m.QuanlyvanbanModule)
+                    },
+                    {
+                        path: 'don-vi-kham-chua-benh',
+                        loadChildren: () => import('./donvikhamchuabenh/donvikhamchuabenh.module').then(m => m.DonvikhamchuabenhModule)
                     },
                     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
                     { path: '**', redirectTo: 'dashboard' },

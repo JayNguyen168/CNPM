@@ -55,6 +55,7 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
                     !input.Filter.IsNullOrEmpty(),
                     p => p.title.Contains(input.Filter) ||
                          p.code.Contains(input.Filter) ||
+                         p.docType.Contains(input.Filter) ||
                          p.description.Contains(input.Filter) ||
                          p.fullText.Contains(input.Filter) ||
                          p.medical_product.Contains(input.Filter) ||
@@ -67,6 +68,7 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
 
                 .OrderBy(p => p.title)
                 .ThenBy(p => p.code)
+                .ThenBy(p => p.docType)
                 .ThenBy(p => p.description)
                 .ThenBy(p => p.fullText)
                 .ThenBy(p => p.medical_product)
@@ -89,16 +91,9 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
             {
                 query = query.Where(p =>
                     p.title.Contains(input.Filter) ||
-                    p.code.Contains(input.Filter) ||
-                    p.description.Contains(input.Filter) ||
-                    p.fullText.Contains(input.Filter) ||
-                    p.medical_product.Contains(input.Filter) ||
-                    p.province.Contains(input.Filter) ||
-                    p.validation.ToString().Contains(input.Filter) ||
-                    p.expiration.ToString().Contains(input.Filter) ||
-                    p.published.ToString().Contains(input.Filter) ||
-                    p.approved.ToString().Contains(input.Filter) ||
-                    p.showed.ToString().Contains(input.Filter));
+                    p.code.Contains(input.Filter) ||    
+                    p.docType.Contains(input.Filter) ||
+                    p.fullText.Contains(input.Filter));
             }
 
             DateTime? dateValid = null;
@@ -114,11 +109,11 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
                 catch (FormatException ex)
                 {
                     // Handle the exception caused by an incorrect format in str_dateValid
-                    dateValid = DateTime.MinValue;
+                    dateValid = new DateTime(4444, 2, 29);
                 }
             }
 
-            if(!str_dateExpire.IsNullOrEmpty())
+            if (!str_dateExpire.IsNullOrEmpty())
             {
                 try
                 {
@@ -128,7 +123,7 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
                 catch (FormatException ex)
                 {
                     // Handle the exception caused by an incorrect format in str_dateExpire
-                    dateExpire = DateTime.MinValue;
+                    dateExpire = new DateTime(4444, 2, 29);
                 }
             }
 
@@ -159,6 +154,7 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
             // Order the results
             query = query.OrderBy(p => p.title)
                          .ThenBy(p => p.code)
+                         .ThenBy(p => p.docType)
                          .ThenBy(p => p.description)
                          .ThenBy(p => p.fullText)
                          .ThenBy(p => p.medical_product)
@@ -172,8 +168,8 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
 
             return new ListResultDto<DocumentListDto>(ObjectMapper.Map<List<DocumentListDto>>(document));
         }
-        [AbpAuthorize(AppPermissions.Pages_Tenant_Document_DeleteRestore)]
 
+        [AbpAuthorize(AppPermissions.Pages_Tenant_Document_DeleteRestore)]
         public async Task DeleteDocument(EntityDto input)
         {
             await _documentRepository.DeleteAsync(input.Id);
