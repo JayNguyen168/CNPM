@@ -58,6 +58,66 @@ namespace MyCompanyName.AbpZeroTemplate.Migrations.Seed.Host
                         showed = true
                     });
             }
+            var test3 = _context.Documents.FirstOrDefault(p => p.code == "abc");
+            if (test3 == null)
+            {
+                _context.Documents.Add(
+                    new MyDocument.Document
+                    {
+                        DVKCBId = 1,
+                        title = "CC21KTM1",
+                        code = "abc",
+                        description = "khung.khung@forty.com",
+                        fullText = "asdasdas asdasd",
+                        medical_product = "giay",
+                        province = "Ha Noi",
+                        validation = new System.DateTime(2023, 2, 31),
+                        expiration = new System.DateTime(2024, 2, 27),
+                        published = true,
+                        approved = true,
+                        showed = true
+                    });
+            }
+            var test4 = _context.Documents.FirstOrDefault(p => p.code == "abc");
+            if (test4 == null)
+            {
+                _context.Documents.Add(
+                    new MyDocument.Document
+                    {
+                        DVKCBId = 1,
+                        title = "CC21KTM1",
+                        code = "abc",
+                        description = "dien.dien@forty.com",
+                        fullText = "asdasda asfasd",
+                        medical_product = "giay test",
+                        province = "Ho Chi Minh",
+                        validation = new System.DateTime(2023, 1, 30),
+                        expiration = new System.DateTime(2024, 2, 25),
+                        published = true,
+                        approved = true,
+                        showed = true
+                    });
+            }
+            var test5 = _context.Documents.FirstOrDefault(p => p.code == "abc");
+            if (test5 == null)
+            {
+                _context.Documents.Add(
+                    new MyDocument.Document
+                    {
+                        DVKCBId = 1,
+                        title = "CC21KTM1",
+                        code = "abc",
+                        description = "haha.haha@fortyone.com",
+                        fullText = "adsfsdf adfasdfa",
+                        medical_product = "khan",
+                        province = "Ho Chi Minh",
+                        validation = new System.DateTime(2023, 1, 29),
+                        expiration = new System.DateTime(2024, 2, 8),
+                        published = true,
+                        approved = true,
+                        showed = true
+                    });
+            }
         }
     }
 }
