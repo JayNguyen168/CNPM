@@ -40,9 +40,6 @@ export class QuanlyvanbanComponent extends AppComponentBase implements OnInit {
     });
 
     this.statuses = [
-      { label: 'BaRia', value: 'BaRia' },
-      { label: 'DongNai', value: 'DongNai' },
-      { label: 'ThuDuc', value: 'ThuDuc' },
       { label: 'Báo cáo', value: 'Báo cáo' },
       { label: 'Bản ghi nhớ', value: 'Bản ghi nhớ' },
       { label: 'Bản thỏa thuận', value: 'Bản thỏa thuận' },
@@ -148,7 +145,7 @@ export class QuanlyvanbanComponent extends AppComponentBase implements OnInit {
   }
 
   filtered(selectedValue: string): void {
-    this.data = this.data.filter(doc => doc.title === selectedValue);
+    this.data = this.data.filter(doc => doc.docType === selectedValue);
     if(!selectedValue)
       this.toggleAdvancedSearch();
   }
