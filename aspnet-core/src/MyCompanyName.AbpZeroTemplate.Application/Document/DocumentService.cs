@@ -83,7 +83,7 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
         }
 
         [HttpGet]
-        public ListResultDto<DocumentListDto> Search(GetDocumentInput input, int option, string str_dateValid, string str_dateExpire)
+        public ListResultDto<DocumentListDto> Search(GetDocumentInput input, int option, string str_dateValid, string str_dateExpire, string typedoc)
         {
             var query = _documentRepository.GetAll();
 
@@ -92,8 +92,13 @@ namespace MyCompanyName.AbpZeroTemplate.DocumentService
                 query = query.Where(p =>
                     p.title.Contains(input.Filter) ||
                     p.code.Contains(input.Filter) ||    
-                    p.docType.Contains(input.Filter) ||
+                    //p.docType.Contains(input.Filter) ||
                     p.fullText.Contains(input.Filter));
+            }
+
+            if (!typedoc.IsNullOrEmpty())
+            {
+                query = query.Where(p => p.docType.Contains(typedoc));
             }
 
             DateTime? dateValid = null;

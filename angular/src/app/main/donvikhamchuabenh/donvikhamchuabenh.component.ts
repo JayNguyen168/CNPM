@@ -23,6 +23,7 @@ export class DonvikhamchuabenhComponent extends AppComponentBase implements OnIn
   filter: string = '';
   validDate: string = '';
   expireDate: string = '';
+  docType: string = '';
   showAdvancedSearch: boolean = false; // Variable to control the visibility of advanced search inputs
   statuses!: any[];
 
@@ -103,28 +104,29 @@ export class DonvikhamchuabenhComponent extends AppComponentBase implements OnIn
     this.filter = '';
     this.validDate = '';
     this.expireDate = '';
+    this.docType = '';
     this.getSearch();
   }
 
   // Function to perform basic search
   getSearch(): void{
     if((this.validDate != '') && (this.expireDate == '' || this.expireDate == null)){
-      this._documentService.search(this.filter, 1, this.validDate, this.expireDate).subscribe((result) => {
+      this._documentService.search(this.filter, 1, this.validDate, this.expireDate, this.docType).subscribe((result) => {
           this.data = result.items;
       })
     }
     else if((this.validDate == '' || this.validDate == null) && this.expireDate != ''){
-      this._documentService.search(this.filter, 2, this.validDate, this.expireDate).subscribe((result) => {
+      this._documentService.search(this.filter, 2, this.validDate, this.expireDate, this.docType).subscribe((result) => {
           this.data = result.items;
       })
     }
     else if(this.validDate != '' && this.expireDate != ''){
-      this._documentService.search(this.filter, 3, this.validDate, this.expireDate).subscribe((result) => {
+      this._documentService.search(this.filter, 3, this.validDate, this.expireDate, this.docType).subscribe((result) => {
           this.data = result.items;
       })
     }
     else{
-      this._documentService.search(this.filter, 0, this.validDate, this.expireDate).subscribe((result) => {
+      this._documentService.search(this.filter, 0, this.validDate, this.expireDate, this.docType).subscribe((result) => {
           this.data = result.items;
       })
     }
@@ -152,6 +154,6 @@ export class DonvikhamchuabenhComponent extends AppComponentBase implements OnIn
   
   getSearchtype(selectedValue: string): void {
       this.filtered(selectedValue);
+      this.docType = selectedValue;
   }
-
 }
