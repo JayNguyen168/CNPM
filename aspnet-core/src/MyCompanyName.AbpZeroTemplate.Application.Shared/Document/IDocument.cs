@@ -18,6 +18,6 @@ namespace MyCompanyName.AbpZeroTemplate.MyDocument
 
         Task RestoreDocument(int input);
 
-        ListResultDto<DocumentListDto> Search(GetDocumentInput input, int option = 0, string str_dateValid = "", string str_dateExpire = "");
+        ListResultDto<DocumentListDto> Search(GetDocumentInput input, int option = 0, string str_dateValid = "", string str_dateExpire = "", string typedoc = "");
     }
 }

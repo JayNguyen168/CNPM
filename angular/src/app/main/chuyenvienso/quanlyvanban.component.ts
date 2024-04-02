@@ -23,6 +23,7 @@ export class QuanlyvanbanComponent extends AppComponentBase implements OnInit {
   filter: string = '';
   validDate: string = '';
   expireDate: string = '';
+  docType: string = '';
   showAdvancedSearch: boolean = false; // Variable to control the visibility of advanced search inputs
   statuses!: any[];
 
@@ -103,28 +104,29 @@ export class QuanlyvanbanComponent extends AppComponentBase implements OnInit {
     this.filter = '';
     this.validDate = '';
     this.expireDate = '';
+    this.docType = '';
     this.getSearch();
   }
 
   // Function to perform basic search
   getSearch(): void{
     if((this.validDate != '') && (this.expireDate == '')){
-      this._documentService.search(this.filter, 1, this.validDate, this.expireDate).subscribe((result) => {
+      this._documentService.search(this.filter, 1, this.validDate, this.expireDate, this.docType).subscribe((result) => {
           this.data = result.items;
       })
     }
     else if(this.validDate == '' && this.expireDate != ''){
-      this._documentService.search(this.filter, 2, this.validDate, this.expireDate).subscribe((result) => {
+      this._documentService.search(this.filter, 2, this.validDate, this.expireDate, this.docType).subscribe((result) => {
           this.data = result.items;
       })
     }
     else if(this.validDate != '' && this.expireDate != ''){
-      this._documentService.search(this.filter, 3, this.validDate, this.expireDate).subscribe((result) => {
+      this._documentService.search(this.filter, 3, this.validDate, this.expireDate, this.docType).subscribe((result) => {
           this.data = result.items;
       })
     }
     else{
-      this._documentService.search(this.filter, 0, this.validDate, this.expireDate).subscribe((result) => {
+      this._documentService.search(this.filter, 0, this.validDate, this.expireDate, this.docType).subscribe((result) => {
           this.data = result.items;
       })
     }
@@ -146,12 +148,14 @@ export class QuanlyvanbanComponent extends AppComponentBase implements OnInit {
 
   filtered(selectedValue: string): void {
     this.data = this.data.filter(doc => doc.docType === selectedValue);
-    if(!selectedValue)
-      this.toggleAdvancedSearch();
   }
   
   getSearchtype(selectedValue: string): void {
-      this.filtered(selectedValue);
+      // this.filtered(selectedValue);
+      this.docType = selectedValue;
+      if(!selectedValue)
+        this.toggleAdvancedSearch();
+      this.getSearch();
   }
 
 }

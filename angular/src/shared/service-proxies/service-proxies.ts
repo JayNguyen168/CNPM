@@ -2906,7 +2906,7 @@ export class DocumentServiceProxy {
      * @param str_dateExpire (optional) 
      * @return Success
      */
-    search(filter: string | undefined, option: number | undefined, str_dateValid: string | undefined, str_dateExpire: string | undefined): Observable<ListResultDtoOfDocumentListDto> {
+    search(filter: string | undefined, option: number | undefined, str_dateValid: string | undefined, str_dateExpire: string | undefined, typedoc: string | undefined): Observable<ListResultDtoOfDocumentListDto> {
         let url_ = this.baseUrl + "/api/services/app/Document/Search?";
         if (filter === null)
             throw new Error("The parameter 'filter' cannot be null.");
@@ -2924,6 +2924,10 @@ export class DocumentServiceProxy {
             throw new Error("The parameter 'str_dateExpire' cannot be null.");
         else if (str_dateExpire !== undefined)
             url_ += "str_dateExpire=" + encodeURIComponent("" + str_dateExpire) + "&";
+        if (typedoc === null)
+            throw new Error("The parameter 'typedoc' cannot be null.");
+        else if (typedoc !== undefined)
+            url_ += "typedoc=" + encodeURIComponent("" + typedoc) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
