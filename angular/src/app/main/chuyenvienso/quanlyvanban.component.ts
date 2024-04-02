@@ -148,13 +148,14 @@ export class QuanlyvanbanComponent extends AppComponentBase implements OnInit {
 
   filtered(selectedValue: string): void {
     this.data = this.data.filter(doc => doc.docType === selectedValue);
-    if(!selectedValue)
-      this.toggleAdvancedSearch();
   }
   
   getSearchtype(selectedValue: string): void {
-      this.filtered(selectedValue);
+      // this.filtered(selectedValue);
       this.docType = selectedValue;
+      if(!selectedValue)
+        this.toggleAdvancedSearch();
+      this.getSearch();
   }
 
 }
